@@ -1,26 +1,33 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/presentation/components/atoms";
 import { cn } from "@/lib/cn";
 
 export interface SearchBarProps {
-  initialQuery?: string;
   placeholder?: string;
   className?: string;
+  initialQuery?: string;
 }
 
 export function SearchBar({
-  initialQuery = "",
   placeholder = "Buscar productos…",
   className,
+  initialQuery,
 }: SearchBarProps) {
   const router = useRouter();
-  const [query, setQuery] = useState(initialQuery);
+  const params = useSearchParams();
+  const urlQuery = params.get("s") ?? "";
+
+  const [query, setQuery] = useState(initialQuery ?? urlQuery);
   const [focused, setFocused] = useState(false);
+
+  useEffect(() => {
+    if (initialQuery === undefined) setQuery(urlQuery);
+  }, [urlQuery, initialQuery]);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
