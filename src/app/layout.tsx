@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import { Header } from "@/presentation/components/organisms/header";
+import { Footer } from "@/presentation/components/organisms/footer";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -29,8 +31,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${outfit.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-cream text-ink antialiased">
-        {children}
+      <body className="flex min-h-screen flex-col bg-cream text-ink antialiased">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
