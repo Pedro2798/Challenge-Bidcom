@@ -12,3 +12,5 @@ export type { SkeletonProps } from "./skeleton";
 
 export { Pill, PILL_TONES, pillToneFor } from "./pill";
 export type { PillProps } from "./pill";
+
+export { SkipLink } from "./skip-link";
