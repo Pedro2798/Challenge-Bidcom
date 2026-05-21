@@ -1,5 +1,51 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand colors */
+  --color-ink: #0b0b1f;
+  --color-ink-soft: #4a4a6a;
+  --color-ink-faded: #8a8aa8;
+  --color-cream: #fff8f0;
+  --color-cream-soft: #fffdf8;
+  --color-paper: #ffffff;
+
+  --color-brand: #0046ee;
+  --color-brand-soft: #5d7fff;
+  --color-brand-deep: #002bb0;
+
+  --color-accent-pink: #ff4d8d;
+  --color-accent-lime: #b4f833;
+  --color-accent-violet: #7b2ff7;
+  --color-accent-yellow: #ffd93d;
+  --color-accent-coral: #ff7a59;
+  --color-accent-mint: #5de4c7;
+
+  --color-success: #2bd476;
+  --color-danger: #ff4d4d;
+
+  /* Typography */
+  --font-display: var(--font-outfit), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  /* Radii (a bit chunkier than default) */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2.25rem;
+  --radius-3xl: 3rem;
+
+  /* Playful "pop" shadows (hard offset) */
+  --shadow-pop-sm: 0 3px 0 0 var(--color-ink);
+  --shadow-pop: 0 6px 0 0 var(--color-ink);
+  --shadow-pop-lg: 0 10px 0 0 var(--color-ink);
+  --shadow-soft: 0 12px 32px -12px rgba(11, 11, 31, 0.18);
+  --shadow-glow: 0 0 0 4px rgba(0, 70, 238, 0.18);
+
+  /* Easings */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
 :root {
   color-scheme: light;
 }
@@ -10,6 +56,33 @@ body {
 }
 
 body {
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Decorative gradient blob, reused as backdrop in pages */
+.bg-confetti {
+  background-image:
+    radial-gradient(at 20% 0%, color-mix(in oklab, var(--color-accent-pink) 28%, transparent) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, color-mix(in oklab, var(--color-accent-violet) 28%, transparent) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, color-mix(in oklab, var(--color-accent-lime) 22%, transparent) 0px, transparent 50%),
+    radial-gradient(at 100% 60%, color-mix(in oklab, var(--color-accent-yellow) 26%, transparent) 0px, transparent 50%);
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
