@@ -126,6 +126,3 @@ Lo que hace la app sentirse "viva":
 - Discount badge "rebotando" al entrar en el detalle.
 - `prefers-reduced-motion` colapsa todo a 0.001ms.
 
-## Notas privadas
-
-El archivo `NOTES.md` (gitignored) contiene mis notas de desarrollo: por qué de cada decisión, cómo funciona cada pieza, y un repaso técnico de Next.js + consumo de APIs. No se commitea.
